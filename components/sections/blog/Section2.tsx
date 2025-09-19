@@ -36,10 +36,10 @@ export default function Section2() {
 
             <div className="container">
                 <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
-                    구성 스텝
+                    검색
                     <span className="position-absolute top-0 start-0 text-primary mt-4">
                                     <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#D42C6C" />
+                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
                                     </svg>
                                 </span>
                 </h6>
@@ -172,7 +172,7 @@ export default function Section2() {
                                                    진행 횟수
                                                     <span className="position-absolute top-0 start-0 text-primary mt-4">
                                                         <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
-                                                            <path d="M0 0H56.5L60 4H0V0Z" fill="#D42C6C" />
+                                                            <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
                                                         </svg>
                                                     </span>
                                                 </h6>
@@ -189,7 +189,7 @@ export default function Section2() {
                                                 평점
                                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
                                                         <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
-                                                            <path d="M0 0H56.5L60 4H0V0Z" fill="#D42C6C" />
+                                                            <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
                                                         </svg>
                                                     </span>
                                             </h6>
@@ -298,7 +298,7 @@ export default function Section2() {
                                 구성 스텝
                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
                                     <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#D42C6C" />
+                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
                                     </svg>
                                 </span>
                             </h6>
@@ -339,7 +339,7 @@ export default function Section2() {
                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
                                     <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
                                          viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#D42C6C"/>
+                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
                                     </svg>
                                 </span>
                             </h6>
@@ -368,7 +368,7 @@ export default function Section2() {
                                 후기
                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
                                     <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#D42C6C" />
+                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
                                     </svg>
                                 </span>
                             </h6>

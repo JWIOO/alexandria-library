@@ -14,8 +14,8 @@ export default function Header({ scroll, isMobileMenu, handleMobileMenu }: any) 
                     font-display: swap;
                 }
             `}</style>
-            <header>
-                <nav
+            <header style={{ position: 'fixed', top: '0', zIndex: 999, width: '100%' }}>
+            <nav
                     className={`navbar navbar-expand-lg navbar-black p-0  border-header z-3 navbar-stick ${scroll ? "top-0 position-fixed w-100" : ""}
                     `}
                     style={{
