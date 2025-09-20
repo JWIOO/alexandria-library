@@ -1,6 +1,5 @@
 "use client";
 import Breadcrumb from "@/components/elements/Breadcrumb";
-import Link from "next/link";
 
 interface PageHeaderProps {
     title: string;
@@ -24,7 +23,7 @@ export default function PageHeader({ title, current_page }: PageHeaderProps) {
                     <div className="container position-relative z-1 py-120-keep">
                         <div className="row align-items-center g-5">
                             <div className="col-lg-8">
-                                <h2 className="text-white text-anime-style-2" style={{ fontFamily: 'GapyeongWave' }}>{title}</h2>
+                                <h2 className="text-white text-anime-style-2 mb-4" style={{ fontFamily: 'GapyeongWave' }}>{title}</h2>
                                 <Breadcrumb page={current_page} />
                             </div>
                             {/*<div className="col-lg-4 col-md-8">*/}

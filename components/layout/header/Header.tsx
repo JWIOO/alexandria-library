@@ -24,8 +24,17 @@ export default function Header({ scroll, isMobileMenu, handleMobileMenu }: any) 
                         borderImageSlice: 1,
                     }}>
 
-                    <div className="container px-0 position-relative">
-                        <Link className="navbar-brand py-2 px-3 border border-header position-lg-absolute start-0 top-0 align-items-center d-flex" href="/">
+                    <div className="container px-0 position-relative"
+                    >
+                        <Link className="navbar-brand py-2 px-3 position-lg-absolute start-0 top-0 align-items-center d-flex" href="/"
+                              style={{
+                                  borderLeft: "1px solid transparent",
+                                  borderRight: "1px solid transparent",
+                                  borderImage: "linear-gradient(90deg, #36DA60 0%, #9AFFEB 100%) 1",
+                                  borderImageSlice: 1,
+                                  height: "100%",
+                              }}
+                        >
                             <svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} viewBox="0 0 40 40" fill="none">
                                 <defs>
                                     <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
