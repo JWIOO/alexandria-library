@@ -1,3 +1,24 @@
+
+/* styles.css */
+.icon-outline {
+    color: transparent;                    /* 내부 투명 */
+    -webkit-text-stroke: 1.6px #000;       /* 크롬/사파리: 외곽선 */
+    -webkit-text-fill-color: transparent;  /* 안전장치 */
+    /* Firefox 등에서 폰트 외곽 효과를 흉내내는 폴백 (두껍게 보이게) */
+    text-shadow:
+            1px 0 0 #000, -1px 0 0 #000,
+            0 1px 0 #000, 0 -1px 0 #000,
+            1px 1px 0 #000, -1px -1px 0 #000,
+            1px -1px 0 #000, -1px 1px 0 #000;
+    /* 크기 조정 */
+    font-size: 22px;
+    line-height: 1;
+    display: inline-block;
+}
+
+
+
+
 .yoga-section-header {
     background-position: center;
     background-repeat: no-repeat;

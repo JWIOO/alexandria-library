@@ -45,33 +45,126 @@ export default function Section2() {
                 </h6>
 
                 {/* 뱃지 영역 */}
-                <div className="d-flex gap-3 align-items-center mx-3">
-                    {/* 필수형 뱃지 */}
-                    <div className="w-32 px-6 py-3 bg-neutral-900 rounded-[5px] inline-flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                            <span className="text-white text-sm font-normal font-['Pretendard']">필수형</span>
-                            <span className="origin-top-left rotate-90 text-lime-400 text-base font-normal font-['Font_Awesome_6_Pro']">
-          
-        </span>
+
+                {/* ===== 뱃지 영역: 아래 블록으로 기존 뱃지 2개 블록을 교체하세요 ===== */}
+                <div className="d-flex flex-wrap gap-4 items-center mx-3 mt-6">
+                    {/* 필수형  */}
+                    <div
+                        role="button"
+                        aria-pressed="false"
+                        tabIndex={0}
+                        className="w-32 px-6 py-3 bg-neutral-900 rounded-[5px] inline-flex justify-between items-center "
+                        style={{
+                            background: "#0f1411",
+                            boxShadow: "inset 0 -1px 0 rgba(255,255,255,0.01)",
+                        }}
+                    >
+                        <div className="flex items-center gap-4">
+                          <span
+                              className="text-white text-[22px] font-semibold leading-none"
+                              style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}
+                          >
+                            필수형
+                          </span>
+                          {/* 화살표를 텍스트 우측에 배치 */}
+                          <svg
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              aria-hidden="true"
+                              style={{
+                                  width: "24px",
+                                  height: "24px",
+                                  color: "#9AFF00",
+                                  filter: "drop-shadow(0 4px 10px rgba(154,255,0,0.12))",
+                              }}
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                          >
+                              <path
+                                  d="M6 9l6 6 6-6"
+                                  stroke="currentColor"
+                                  strokeWidth="2.2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                              />
+                          </svg>
                         </div>
+
                     </div>
 
-                    {/* 해시태그 뱃지 */}
-                    <div className="w-32 px-6 py-3 bg-neutral-900 rounded-[5px] inline-flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                            <span className="text-gray-500 text-sm font-normal font-['Pretendard']">해시태그</span>
-                            <span className="origin-top-left rotate-90 text-lime-400 text-base font-normal font-['Font_Awesome_6_Pro']">
-          
-        </span>
+                    {/* 해시태그 (비활성 스타일) */}
+                    <div
+                        role="button"
+                        aria-pressed="false"
+                        tabIndex={0}
+                        className="min-w-[220px] md:min-w-[320px] h-[72px] px-8 rounded-[12px] inline-flex justify-between items-center"
+                        style={{
+                            background: "#0f1411",
+                            boxShadow: "inset 0 -1px 0 rgba(255,255,255,0.01)",
+                        }}
+                                        >
+                                            <div className="flex items-center gap-4">
+                          <span
+                              className="text-gray-500/60 text-[22px] font-semibold leading-none"
+                              style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}
+                          >
+                            해시태그
+                          </span>
+                          {/* 화살표를 텍스트 우측에 배치 */}
+                          <svg
+                              viewBox="0 0 24 24"
+                              width="24"
+                              height="24"
+                              aria-hidden="true"
+                              style={{
+                                  width: "24px",
+                                  height: "24px",
+                                  color: "#9AFF00",
+                                  filter: "drop-shadow(0 4px 10px rgba(154,255,0,0.12))",
+                              }}
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                          >
+                              <path
+                                  d="M6 9l6 6 6-6"
+                                  stroke="currentColor"
+                                  strokeWidth="2.2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                              />
+                          </svg>
                         </div>
+
                     </div>
                 </div>
+                {/* ===== 뱃지 영역 끝 ===== */}
 
 
-                <form className="input-group mt-3" data-aos="zoom-in">
-                    <input type="text" className="form-control border" placeholder="찾고 싶은 내용을 입력하세요." aria-label="Enter Your Keywords" aria-describedby="button-addon2" />
-                    <button aria-label="search" type="submit" className="btn btn-primary bg-primary border-0 rounded-2" id="button-addon2">
-                        <i className="fa-solid fa-magnifying-glass text-white" />
+                {/*<div className="d-flex gap-3 align-items-center mx-3">*/}
+                {/*    /!* 필수형 뱃지 *!/*/}
+                {/*    <div className="w-32 px-6 py-3 bg-neutral-900 rounded-[5px] inline-flex justify-between items-center">*/}
+                {/*        <div className="flex items-center gap-2">*/}
+                {/*            <span className="text-white text-sm font-normal font-['Pretendard']">필수형</span>*/}
+                {/*            <i className="fa-solid fa-arrow-right origin-top-left rotate-180 text-lime-400 text-base font-normal"></i>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+
+                {/*    /!* 해시태그 뱃지 *!/*/}
+                {/*    <div className="w-32 px-6 py-3 bg-neutral-900 rounded-[5px] inline-flex justify-between items-center">*/}
+                {/*        <div className="flex items-center gap-2">*/}
+                {/*            <span className="text-gray-500 text-sm font-normal font-['Pretendard']">해시태그</span>*/}
+                {/*            <i className="fa-solid fa-arrow-right origin-top-left rotate-90 text-lime-400 text-base font-normal"></i>*/}
+                {/*        </div>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
+
+
+                <form className="input-group mt-3 " data-aos="zoom-in">
+                    <input type="text" className="form-control border rounded-[5px] outline outline-1 outline-offset-[-0.50px]" style={{backgroundColor: "#111111"}} placeholder="찾고 싶은 내용을 입력하세요." aria-label="Enter Your Keywords" aria-describedby="button-addon2" />
+                    <button aria-label="search" type="submit" className="btn btn-primary border-0 rounded-2" id="button-addon2"
+                            style={{backgroundColor: "#ADFF00"}} >
+                        <i className="fa-solid fa-magnifying-glass text-black " />
                     </button>
                 </form>
                 <div className="text-anime-style-2 mb-8 text-anime-style-2"> </div>
@@ -86,17 +179,42 @@ export default function Section2() {
                                          src={`assets/imgs/pages/yoga/page-classes-details/${img}`} alt="AstraX" />
                                     </div>
                                     {/* 좌측 상단 뱃지 */}
-                                    <div className="position-absolute top-0 start-0 m-3">
-                                            <span className="badge bg-success text-dark px-3 py-2 rounded-2 fw-bold">
-                                              필수형
-                                            </span>
+                                    <div className="px-3.5 py-2  position-absolute  top-0 start-0 m-3
+                                    "
+                                        style={{
+                                            padding: '30px 18px',
+                                            left: 0,
+                                            top: 0,
+                                            position: 'absolute',
+                                            backgroundColor: '#dcfce7', // bg-green-100
+                                            borderRadius: '5px',
+                                            display: 'inline-flex',
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            gap: '10px',
+                                            overflow: 'hidden',
+                                            margin: '12px'
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                justifyContent: 'center',
+                                                color: '#166534', // text-green-800
+                                                fontSize: '14px', // text-sm
+                                                fontWeight: 'bold',
+                                                fontFamily: 'Pretendard'
+                                            }}
+                                        >
+                                            필수형
+                                        </div>
                                     </div>
                                     <div className="position-absolute bottom-0 start-0 w-100 py-2 news-gradient--overlay news-gradient from-green-500/80 to-teal-200/80
-                                    "
-                                    >
-                                        <div className="d-flex card-news-information gap-4 ps-2 ms-3 text-black">
-                                            <div className="d-flex align-items-center gap-1 text-black">
-                                                <i className="fa-solid fa-code_seconds" />
+                                        "
+                                        >
+                                        <div className="d-flex card-news-information gap-4 ps-2 ms-3" style={{color: 'transparent'}}>
+                                            <div className="d-flex align-items-center gap-1">
+                                                <i className="fa-solid fa-code_seconds " style={{color: 'black', backgroundColor: 'transparent'}}
+                                                 />
                                                 <p className="mb-0">
 
                                                     <Link href={`${link_author}`} className="">
@@ -105,7 +223,7 @@ export default function Section2() {
                                                 </p>
                                             </div>
                                             <div className="d-flex align-items-center gap-1">
-                                                <i className="fa-solid fa-code_seconds" />
+                                                <i className="fa-solid fa-code_seconds" style={{color: 'black', backgroundColor: 'transparent'}} />
                                                 <p className="mb-0 text-black">{code_second}</p>
                                             </div>
                                         </div>
@@ -121,7 +239,7 @@ export default function Section2() {
                                         ))}
                                     </h5>
 
-                                    <Link href="link" className="btn btn-primary hover-up rounded-0">
+                                    <Link href="link" className="btn btn-primary hover-up rounded-0 mt-3 mb-3">
                                         <span style={{ color: '#ADFF00' }}>게시물 보기</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16}
                                              viewBox="0 0 16 16" fill="none">
@@ -131,44 +249,89 @@ export default function Section2() {
                                         </svg>
                                     </Link>
                                     <div
-                                        className="self-stretch justify-center text-zinc-500 text-base font-medium font-['Pretendard'] leading-relaxed text-description-title">설명
+                                        className="self-stretch justify-center text-zinc-500 text-base font-medium leading-relaxed text-description-title"
+                                        style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>설명
                                     </div>
-                                    <p className="mb-5 pb-5 text-description-content">{description}</p>
+                                    <p className="pb-2 text-description-content " >{description}</p>
 
                                     <div
-                                        className="self-stretch justify-center text-zinc-500 text-base font-medium font-['Pretendard'] leading-relaxed text-description-title">목표
+                                        className="self-stretch justify-center text-zinc-500 text-base font-medium leading-relaxed text-description-title"
+                                        style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>목표
                                     </div>
                                     <p className="mb-5 pb-5 text-description-content ">{goal}</p>
+
+                                  {/*슬로건 영역*/}
                                     <div
-                                        className="relative self-stretch h-52 p-5 rounded-xl shadow-[0px_3px_15px_0px_rgba(255,255,255,0.20)] border-b border-CP-CPC flex flex-col justify-center items-center gap-2.5 overflow-hidden"
                                         style={{
-                                            backgroundImage: "url('assets/imgs/pages/yoga/page-about/subbanner.png')", // 업로드한 이미지 경로
+                                            position: "relative",
+                                            width: "100%",
+                                            height: "104px", // h-28
+                                            padding: "20px", // p-5
+                                            borderRadius: "12px", // rounded-xl
+                                            boxShadow: "0px 3px 15px 0px rgba(255,255,255,0.20)",
+                                            borderBottom: "1px solid #ADFF00", // border-b border-CP-CPC
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            gap: "10px", // gap-2.5
+                                            overflow: "hidden",
+                                            backgroundImage: "url('assets/imgs/pages/yoga/page-about/subbanner.png')",
                                             backgroundSize: "cover",
                                             backgroundPosition: "center",
                                         }}
                                     >
                                         {/* 반투명 오버레이 (가독성을 위해 추가) */}
-                                        <div className="absolute inset-0 bg-black/60"></div>
+                                        <div style={{
+                                            position: "absolute",
+                                            top: 0,
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            backgroundColor: "rgba(0, 0, 0, 0.6)"
+                                        }}></div>
 
                                         {/* 텍스트 영역 */}
-                                        <div className="relative flex flex-col justify-start items-center gap-[5px]">
-                                            <div className="w-[622px] text-center text-white text-base font-bold font-['Gapyeong_Hanseokbong'] leading-snug">
-                                                “아들아, 중고차를 팔 때, 단 1시간을 들여 정성들여 닦고 간단한 흠집만이라도 제거한다면, <br />
-                                                그 간단한 ‘정성’만으로도 몇 백불은 더 받을 수 있단다.”
+                                        <div style={{
+                                            position: "relative",
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            justifyContent: "flex-start",
+                                            alignItems: "center",
+                                            gap: "5px"
+                                        }}>
+                                            <div style={{
+                                                width: "622px",
+                                                textAlign: "center",
+                                                color: "white",
+                                                fontSize: "16px",
+                                                fontWeight: "bold",
+                                                fontFamily: "Gapyeong_Hanseokbong",
+                                                lineHeight: "1.375"
+                                            }}>
+                                                "아들아, 중고차를 팔 때, 단 1시간을 들여 정성들여 닦고 간단한 흠집만이라도 제거한다면, <br />
+                                                그 간단한 '정성'만으로도 몇 백불은 더 받을 수 있단다."
                                             </div>
-                                            <div className="text-center text-gray-400 text-xs font-bold font-['Gapyeong_Hanseokbong'] leading-none">
+                                            <div style={{
+                                                textAlign: "center",
+                                                color: "#9ca3af",
+                                                fontSize: "12px",
+                                                fontWeight: "bold",
+                                                fontFamily: "Gapyeong_Hanseokbong",
+                                                lineHeight: "1"
+                                            }}>
                                                 - 미국 애리조나 주 카운티 maxim -
                                             </div>
                                         </div>
                                     </div>
                                     {/* 진행횟수 / 평점 섹션 */}
-                                    <div className="row g-5 mb-5">
+                                    <div className="row g-5  mb-2" style={{marginTop: '0.2px'}}>
                                         {/* 진행횟수 */}
-                                        <div className="col-md-6">
-                                            <div className="self-stretch justify-center">
+                                        <div className="col-md-6 items-center justify-end ">
+                                            <div className="self-stretch justify-center items-center justify-end ">
 
 
-                                                <h6 className="position-relative border-bottom w-100 mb-4 pb-3">
+                                                <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
                                                    진행 횟수
                                                     <span className="position-absolute top-0 start-0 text-primary mt-4">
                                                         <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
@@ -177,15 +340,22 @@ export default function Section2() {
                                                     </span>
                                                 </h6>
                                             </div>
-                                            <div className="d-flex align-items-baseline">
-                                            <span className="fw-bold fs-2">37</span>
-                                                <span className="text-gray-400 ms-2">회</span>
+                                            <div className="d-flex align-items-baseline items-center justify-end ">
+                                            <span className="fw-bold fs-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>37</span>
+                                                <span className="text-gray-400 ms-2"  style={{
+                                                    fontFamily: "Pretendard, system-ui, -apple-system",
+                                                    color: "#a3a3a3",
+                                                    fontSize: "20px",
+                                                    fontWeight: "400",
+                                                    textAlign: "center",
+                                                    lineHeight: "normal"
+                                                }}>회</span>
                                             </div>
                                         </div>
 
                                         {/* 평점 */}
                                         <div className="col-md-6">
-                                            <h6 className="position-relative border-bottom w-100 mb-4 pb-3">
+                                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
                                                 평점
                                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
                                                         <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
@@ -194,16 +364,17 @@ export default function Section2() {
                                                     </span>
                                             </h6>
                                             <div className="d-flex align-items-center">
-                                                <span className="fw-bold fs-2 me-2">9.5</span>
+                                                <span className="fw-bold fs-2 me-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>9.0</span>
                                                 {/* 별 10개 */}
                                                 <div className="d-flex">
                                                     {Array.from({ length: 10 }).map((_, i) => (
                                                         <i
                                                             key={i}
-                                                            className={`fa-solid fa-star ${
-                                                                i < 9.5 ? "text-lime-400" : "text-gray-600"
-                                                            }`}
-                                                            style={{ fontSize: "14px" }}
+                                                            className="fa-solid fa-star"
+                                                            style={{
+                                                                fontSize: "14px",
+                                                                color: i < 9 ? "#ADFF00" : "#6b7280"
+                                                            }}
                                                         />
                                                     ))}
                                                 </div>
@@ -259,7 +430,7 @@ export default function Section2() {
                                             </Link>
                                         </li>
                                         <li className="page-item">
-                                            <Link className="icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular" href="#">
+                                            <Link className="icon-md fs-5 page-link pagination_item_ing border-0 icon-shape fw-regular" href="#">
                                                 ...
                                             </Link>
                                         </li>
@@ -276,7 +447,7 @@ export default function Section2() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-4 ps-lg-5 mb-lg-0 mb-5 p-3">
+                    <div className="col-lg-4 ps-lg-5 mb-lg-0 mb-5">
                         {/*<div className="block-search p-lg-5 p-3 bg-white rounded-4 border-primary-2">*/}
                         {/*    /!*<h6 className="position-relative border-bottom w-100 mb-4 pb-3">*!/*/}
                         {/*    /!*    Search Here*!/*/}
@@ -293,7 +464,7 @@ export default function Section2() {
                         {/*    /!*    </button>*!/*/}
                         {/*    /!*</form>*!/*/}
                         {/*</div>*/}
-                        <div className="block-our-services p-lg-5 p-4 bg-black rounded-4 border-primary-2 mt-4">
+                        <div className="block-our-services p-lg-5 p-4 bg-black rounded-4 border-primary-2">
                             <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
                                 구성 스텝
                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
@@ -320,10 +491,12 @@ export default function Section2() {
                                         <div
                                             className="d-flex left-0 top-0 absolute inline-flex justify-start items-start gap-[5px]">
                                             <div
-                                                className="justify-center text-base font-semibold font-['Pretendard'] leading-normal">1)
+                                                className="justify-center text-base font-semibold leading-normal"
+                                                style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>1)
                                             </div>
                                             <div
-                                                className="w-72 justify-center text-gray-400 text-base font-normal font-['Sora'] leading-relaxed">[도식화]
+                                                className="w-72 justify-center text-gray-400 text-base font-normal leading-relaxed"
+                                                style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>[도식화]
                                                 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등
                                             </div>
                                         </div>
@@ -383,12 +556,14 @@ export default function Section2() {
                                 <div>
                                     <div className="d-flex inline-flex justify-start items-center gap-1.5">
                                         <div
-                                            className="justify-center text-sm font-semibold font-['Pretendard']">김민지
+                                            className="justify-center text-sm font-semibold"
+                                            style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>김민지
                                         </div>
                                         <div
                                             className="w-0 h-2.5 outline outline-1 "></div>
                                         <div
-                                            className="justify-center text-neutral-400 text-sm font-medium font-['Pretendard']">6기
+                                            className="justify-center text-neutral-400 text-sm font-medium"
+                                            style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>6기
                                             서비스팀
                                         </div>
                                     </div>
@@ -397,7 +572,8 @@ export default function Section2() {
                                     {/*    <p className="fs-8 mb-0 fw-medium">15 Jan, 2025</p>*/}
                                     {/*</span>*/}
                                     <div
-                                        className="mt-4 justify-center text-lg font-medium font-['Pretendard'] leading-relaxed">해당
+                                        className="mt-4 justify-center text-lg font-medium leading-relaxed"
+                                        style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>해당
                                         내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)
                                     </div>
                                 </div>
