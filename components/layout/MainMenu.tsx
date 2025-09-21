@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function MainMenu() {
     return (
-        <ul className="navbar-nav mx-auto gap-4 align-items-lg-center">
+        <ul className="navbar-nav gap-4 align-items-lg-center">
             <li className="nav-item">
                 <Link className=" text-white nav-link text-uppercase" href="/" style={{ fontFamily: 'Pretendard' }}>
                     Home

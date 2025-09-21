@@ -86,7 +86,7 @@ export default function Layout({ headerStyle, footerStyle, breadcrumbTitle, chil
 				{children}
 			</main>
 
-			< Footer />
+			{/*< Footer />*/}
 
 			<BackToTop />
 		</>

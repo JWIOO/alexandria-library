@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 
 const listnews = [
     {
@@ -11,6 +12,119 @@ const listnews = [
         description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
         goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
     },
+
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+    },
+
     // {
     //     img: "img-new-2.png",
     //     link: "/classes-details",
@@ -31,8 +145,61 @@ const listnews = [
     // },
 ];
 export default function Section2() {
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 5;
+
+    // 페이지네이션 계산
+    const totalPages = Math.ceil(listnews.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentItems = listnews.slice(startIndex, endIndex);
+
+    // 디버깅을 위한 콘솔 로그
+    console.log('=== 페이지네이션 디버그 ===');
+    console.log('전체 아이템 수:', listnews.length);
+    console.log('페이지당 아이템 수:', itemsPerPage);
+    console.log('총 페이지 수:', totalPages);
+    console.log('현재 페이지:', currentPage);
+    console.log('startIndex:', startIndex);
+    console.log('endIndex:', endIndex);
+    console.log('현재 표시할 아이템 수:', currentItems.length);
+
+    // 페이지 변경 함수
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+        // 페이지 변경 시 스크롤을 상단으로 이동
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // 페이지 번호 배열 생성
+    const getPageNumbers = () => {
+        const pages = [];
+        if (totalPages <= 5) {
+            // 총 페이지가 5개 이하면 모든 페이지 표시
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            // 현재 페이지를 기준으로 페이지 번호 계산
+            if (currentPage <= 3) {
+                pages.push(1, 2, 3, '...', totalPages);
+            } else if (currentPage >= totalPages - 2) {
+                pages.push(1, '...', totalPages - 2, totalPages - 1, totalPages);
+            } else {
+                pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+            }
+        }
+        return pages;
+    };
+
     return (
-        <section className="yoga-blog-section-2 position-relative overflow-hidden py-120 bg-secondary-2">
+        <>
+            <style jsx>{`
+                .link-hover-effect:hover {
+                    color: #ADFF00 !important;
+                }
+            `}</style>
+            <section className="yoga-blog-section-2 position-relative overflow-hidden py-120 bg-secondary-2">
 
             <div className="container">
                 <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
@@ -47,95 +214,51 @@ export default function Section2() {
                 {/* 뱃지 영역 */}
 
                 {/* ===== 뱃지 영역: 아래 블록으로 기존 뱃지 2개 블록을 교체하세요 ===== */}
-                <div className="d-flex flex-wrap gap-4 items-center mx-3 mt-6">
-                    {/* 필수형  */}
+                <div className="d-flex gap-3 mb-4">
+                    {/* 필수형 드롭다운 */}
                     <div
                         role="button"
-                        aria-pressed="false"
-                        tabIndex={0}
-                        className="w-32 px-6 py-3 bg-neutral-900 rounded-[5px] inline-flex justify-between items-center "
+                        className="w-32 px-5 py-2 d-flex align-items-center gap-2"
                         style={{
-                            background: "#0f1411",
-                            boxShadow: "inset 0 -1px 0 rgba(255,255,255,0.01)",
+                            backgroundColor: '#1a1a1a',
+                            border: '1px solid #333',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                            minWidth: '120px',
+                            gap: '2px'
                         }}
                     >
-                        <div className="flex items-center gap-4">
-                          <span
-                              className="text-white text-[22px] font-semibold leading-none"
-                              style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}
-                          >
+                        <span className="text-white" style={{ fontSize: '14px', fontFamily: "Pretendard, system-ui, -apple-system" }}>
                             필수형
-                          </span>
-                          {/* 화살표를 텍스트 우측에 배치 */}
-                          <svg
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              aria-hidden="true"
-                              style={{
-                                  width: "24px",
-                                  height: "24px",
-                                  color: "#9AFF00",
-                                  filter: "drop-shadow(0 4px 10px rgba(154,255,0,0.12))",
-                              }}
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                          >
-                              <path
-                                  d="M6 9l6 6 6-6"
-                                  stroke="currentColor"
-                                  strokeWidth="2.2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                              />
-                          </svg>
-                        </div>
-
+                        </span>
+                        <img
+                            src="/assets/imgs/pages/yoga/template/icons/arrow-down.png"
+                            alt="icon-dropdown"
+                            style={{ marginLeft: 'auto', width: '12px', height: '12px' }}
+                        />
                     </div>
 
-                    {/* 해시태그 (비활성 스타일) */}
+                    {/* 해시태그 드롭다운 */}
                     <div
                         role="button"
-                        aria-pressed="false"
-                        tabIndex={0}
-                        className="min-w-[220px] md:min-w-[320px] h-[72px] px-8 rounded-[12px] inline-flex justify-between items-center"
+                        className="w-32 px-5 py-2 d-flex align-items-center gap-2"
                         style={{
-                            background: "#0f1411",
-                            boxShadow: "inset 0 -1px 0 rgba(255,255,255,0.01)",
+                            backgroundColor: '#1a1a1a',
+                            border: '1px solid #333',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                            minWidth: '120px',
+                            gap: '2px'
                         }}
-                                        >
-                                            <div className="flex items-center gap-4">
-                          <span
-                              className="text-gray-500/60 text-[22px] font-semibold leading-none"
-                              style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}
-                          >
-                            해시태그
-                          </span>
-                          {/* 화살표를 텍스트 우측에 배치 */}
-                          <svg
-                              viewBox="0 0 24 24"
-                              width="24"
-                              height="24"
-                              aria-hidden="true"
-                              style={{
-                                  width: "24px",
-                                  height: "24px",
-                                  color: "#9AFF00",
-                                  filter: "drop-shadow(0 4px 10px rgba(154,255,0,0.12))",
-                              }}
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                          >
-                              <path
-                                  d="M6 9l6 6 6-6"
-                                  stroke="currentColor"
-                                  strokeWidth="2.2"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                              />
-                          </svg>
-                        </div>
-
+                    >
+                        <span className="text-grey" style={{ fontSize: '14px', fontFamily: "Pretendard, system-ui, -apple-system" }}>
+                           해시태그
+                        </span>
+                        <img
+                            src="/assets/imgs/pages/yoga/template/icons/arrow-down.png"
+                            alt="icon-dropdown"
+                            style={{ marginLeft: 'auto', width: '12px', height: '12px' }}
+                        />
                     </div>
                 </div>
                 {/* ===== 뱃지 영역 끝 ===== */}
@@ -170,8 +293,8 @@ export default function Section2() {
                 <div className="text-anime-style-2 mb-8 text-anime-style-2"> </div>
                 <div className="row g-5">
                     <div className="col-lg-8">
-                        {listnews.map(({ img, link, link_author, code_first, code_second, title, description, goal }) => (
-                            <div className="card-new position-relative wow img-custom-anim-top mb-6">
+                        {currentItems.map(({ img, link, link_author, code_first, code_second, title, description, goal }, index) => (
+                            <div key={startIndex + index} className="card-new position-relative wow img-custom-anim-top mb-6">
                                 <div className="card-new-img position-relative rounded-top-3 overflow-hidden zoom-img">
 
                                     <div className="ratio ratio-16x9">
@@ -239,7 +362,7 @@ export default function Section2() {
                                         ))}
                                     </h5>
 
-                                    <Link href="link" className="btn btn-primary hover-up rounded-0 mt-3 mb-3">
+                                    <Link href="https://phalanx-club.tistory.com/1471" className="btn btn-primary hover-up rounded-0 mt-3 mb-3">
                                         <span style={{ color: '#ADFF00' }}>게시물 보기</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16}
                                              viewBox="0 0 16 16" fill="none">
@@ -400,52 +523,93 @@ export default function Section2() {
 
                             </div>
                         ))}
-                        <div className="row pt-3 text-center">
-                            <div className="d-flex justify-content-start align-items-center">
-                                <nav aria-label="Page navigation example">
-                                    <ul className="pagination gap-2">
-                                        <li className="page-item">
-                                            <Link
-                                                className="icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular"
-                                                href="#" aria-label="Previous">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 22 22" fill="none">
-                                                    <path className="stroke-dark" d="M9.49554 6.5L4.78125 11L9.49554 15.5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path className="stroke-dark" d="M17.2143 11H5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </Link>
-                                        </li>
-                                        <li className="page-item">
-                                            <Link className="icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular" href="#">
-                                                1
-                                            </Link>
-                                        </li>
-                                        <li className="page-item">
-                                            <Link className="icon-md fs-5 page-link active pagination_item border-0 icon-shape fw-regular" href="#">
-                                                2
-                                            </Link>
-                                        </li>
-                                        <li className="page-item">
-                                            <Link className="icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular" href="#">
-                                                3
-                                            </Link>
-                                        </li>
-                                        <li className="page-item">
-                                            <Link className="icon-md fs-5 page-link pagination_item_ing border-0 icon-shape fw-regular" href="#">
-                                                ...
-                                            </Link>
-                                        </li>
-                                        <li className="page-item">
-                                            <Link className="icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular" href="#" aria-label="Next">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 22 22" fill="none">
-                                                    <path className="stroke-dark" d="M12.5 6.5L17.2143 11L12.5 15.5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
-                                                    <path className="stroke-dark" d="M16.9955 11H4.78125" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
-                                                </svg>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </nav>
+                        {totalPages > 1 && (
+                            <div className="row pt-3 text-center">
+                                <div className="d-flex justify-content-end align-items-center">
+                                    <nav aria-label="Page navigation example">
+                                        <ul className="pagination gap-2">
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 1 ? 'disabled' : ''}`}
+                                                    href="#"
+                                                    aria-label="Previous"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        if (currentPage > 1) handlePageChange(currentPage - 1);
+                                                    }}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 22 22" fill="none">
+                                                        <path className="stroke-dark" d="M9.49554 6.5L4.78125 11L9.49554 15.5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                        <path className="stroke-dark" d="M17.2143 11H5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </Link>
+                                            </li>
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 1 ? 'active' : ''}`}
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handlePageChange(1);
+                                                    }}
+                                                >
+                                                    1
+                                                </Link>
+                                            </li>
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 2 ? 'active' : ''}`}
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handlePageChange(2);
+                                                    }}
+                                                >
+                                                    2
+                                                </Link>
+                                            </li>
+                                            {totalPages >= 3 && (
+                                                <li className="page-item">
+                                                    <Link
+                                                        className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 3 ? 'active' : ''}`}
+                                                        href="#"
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            handlePageChange(3);
+                                                        }}
+                                                    >
+                                                        3
+                                                    </Link>
+                                                </li>
+                                            )}
+                                            {totalPages > 3 && (
+                                                <li className="page-item">
+                                                    <Link className="icon-md fs-5 page-link pagination_item_ing border-0 icon-shape fw-regular" href="#">
+                                                        ···
+                                                    </Link>
+                                                </li>
+                                            )}
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === totalPages ? 'disabled' : ''}`}
+                                                    href="#"
+                                                    aria-label="Next"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        if (currentPage < totalPages) handlePageChange(currentPage + 1);
+                                                    }}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 22 22" fill="none">
+                                                        <path className="stroke-dark" d="M12.5 6.5L17.2143 11L12.5 15.5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                        <path className="stroke-dark" d="M16.9955 11H4.78125" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                     <div className="col-lg-4 ps-lg-5 mb-lg-0 mb-5">
                         {/*<div className="block-search p-lg-5 p-3 bg-white rounded-4 border-primary-2">*/}
@@ -464,7 +628,26 @@ export default function Section2() {
                         {/*    /!*    </button>*!/*/}
                         {/*    /!*</form>*!/*/}
                         {/*</div>*/}
-                        <div className="block-our-services p-lg-5 p-4 bg-black rounded-4 border-primary-2">
+
+
+                        {/*<div*/}
+                        {/*    className="self-stretch h-12 px-3.5 py-3 bg-neutral-900 rounded-[5px] outline outline-1 outline-offset-[-1px] outline-stone-500 inline-flex flex-col justify-start items-start gap-2.5">*/}
+                        {/*    <div className="w-72 h-6 relative bg-neutral-900">*/}
+                        {/*        <div className="left-0 top-0 absolute inline-flex justify-start items-start gap-[5px]">*/}
+                        {/*            <div*/}
+                        {/*                className="justify-center text-white text-base font-semibold font-['Pretendard'] leading-normal">1)*/}
+                        {/*            </div>*/}
+                        {/*            <div*/}
+                        {/*                className="w-72 justify-center text-gray-400 text-base font-normal font-['Sora'] leading-relaxed">[도식화]*/}
+                        {/*                잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등*/}
+                        {/*            </div>*/}
+                        {/*        </div>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
+
+
+
+                        <div className="block-our-services p-lg-5  bg-black rounded-4 border-primary-2">
                             <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
                                 구성 스텝
                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
@@ -474,52 +657,97 @@ export default function Section2() {
                                     </svg>
                                 </span>
                             </h6>
-                            {/*<Link href="#" className="btn btn-outline-secondary text-capitalize d-flex justify-content-between align-items-center mb-3 p-3 rounded-3" data-aos="fade-up" data-aos-delay={0}>*/}
-                            {/*    <span className="fw-medium">Yoga Practices &amp; Techniques</span>*/}
-                            {/*    <i className="fa-solid fa-arrow-right" />*/}
-                            {/*</Link>*/}
 
-                            <div
-                                className="self-stretch h-12 px-3.5 py-3 bg-neutral-900 rounded-[5px] outline outline-1 outline-offset-[-1px] outline-stone-500 flex items-center">
-                                <div className="flex items-start gap-[5px] w-full">
-                                    <div
-                                        className="text-white text-base font-semibold font-['Pretendard'] leading-normal flex-shrink-0">1)
-                                    </div>
-                                    <div
-                                        className="text-gray-400 text-base font-normal font-['Sora'] leading-normal truncate flex-1">[도식화]
-                                        잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Link href="#"
-                                  className="btn btn-outline-secondary text-capitalize d-flex justify-content-between align-items-center mb-3 p-3 rounded-3"
-                                  data-aos="fade-up" data-aos-delay={400}>
-                                <span className="fw-medium">Health &amp; Wellness</span>
-                                <i className="fa-solid fa-arrow-right"/>
-                            </Link>
-                            <div
-                                className="btn btn-outline-secondary text-capitalize d-flex justify-content-between align-items-center mb-3 p-3 rounded-3"
-                            >
+                            {/* 구성 스텝 아이템들 */}
+                            <div className="d-flex flex-column gap-2">
                                 <div
-                                    className="h-12 px-3.5 py-3 bg-neutral-900 rounded-[5px] outline outline-1 outline-offset-[-1px] outline-stone-500 inline-flex flex-col justify-start items-start gap-2.5">
-                                    <div className="w-72 h-6 relative bg-neutral-900">
-                                        <div
-                                            className="d-flex left-0 top-0 absolute inline-flex justify-start items-start gap-[5px]">
-                                            <div
-                                                className="justify-center text-base font-semibold leading-normal"
-                                                style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>1)
-                                            </div>
-                                            <div
-                                                className="w-72 justify-center text-gray-400 text-base font-normal leading-relaxed"
-                                                style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>[도식화]
-                                                잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등
-                                            </div>
-                                        </div>
+                                    className="p-3 rounded-2"
+                                    style={{
+                                        backgroundColor: 'transparent',
+                                        border: '1px solid #666666',
+                                        borderRadius: '5px'
+                                    }}
+                                >
+                                    <div className="d-flex align-items-start gap-2"
+                                    style={{padding: '0px'}}>
+                                        <span className="text-white fw-semibold"
+                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>1)</span>
+                                        <span
+                                            className=""
+                                            style={{
+                                                fontFamily: "Pretendard, system-ui, -apple-system",
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                                whiteSpace: 'nowrap',
+                                                flex: 1,
+                                                color: '#B4B9C0',
+                                                letterSpacing: '-1.2px'
+
+                                            }}
+                                        >
+                                            [도식화] 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등)
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <div
+                                    className="p-3 rounded-2"
+                                    style={{
+                                        backgroundColor: 'transparent',
+                                        border: '1px solid #666666',
+                                        borderRadius: '5px'
+                                    }}
+                                >
+                                    <div className="d-flex align-items-start gap-2">
+                                        <span className="text-white fw-semibold"
+                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>2)</span>
+                                        <span
+                                            className="text-gray-400"
+                                            style={{
+                                                fontFamily: "Pretendard, system-ui, -apple-system",
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                                whiteSpace: 'nowrap',
+                                                flex: 1,
+                                                color: '#B4B9C0',
+                                                letterSpacing: '-1.2px'
+                                            }}
+                                        >
+                                            [그래프] 잘 보이는 기획은 그래프를 가진다 (막대, 선, 원형, 점형 등)
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div
+                                    className="p-3 rounded-2"
+                                    style={{
+                                        backgroundColor: 'transparent',
+                                        border: '1px solid #666666',
+                                        borderRadius: '5px'
+                                    }}
+                                >
+                                    <div className="d-flex align-items-start gap-2">
+                                        <span className="text-white fw-semibold"
+                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>3)</span>
+                                        <span
+                                            className="text-gray-400"
+                                            style={{
+                                                fontFamily: "Pretendard, system-ui, -apple-system",
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                                whiteSpace: 'nowrap',
+                                                flex: 1,
+                                                color: '#B4B9C0',
+                                                letterSpacing: '-1.2px'
+
+                                            }}
+                                        >
+                                            [강조화] 잘 보이는 기획은 포인트를 가진다 (크기, 색상, 밑줄, 굵기, 배경 등)
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-
 
                         </div>
                         <div className="p-lg-5 p-4 rounded-4 bg-black  mt-4">
@@ -550,8 +778,15 @@ export default function Section2() {
                                         <span className="text-gray-500">|</span>
                                         <span className="text-gray-400 text-sm">7기 브랜드팀</span>
                                     </div>
-                                    <Link href="#">
-                                        <div className="text-white  text-sm fw-bold link-underline" style={{ lineHeight: "1.4" }}>
+                                    <Link href="https://phalanx-club.tistory.com/1472">
+                                        <div
+                                            className="text-white text-sm fw-bold link-hover-effect"
+                                            style={{
+                                                lineHeight: "1.4",
+                                                textDecoration: "underline",
+                                                transition: "color 0.3s ease"
+                                            }}
+                                        >
                                             GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)
                                         </div>
                                     </Link>
@@ -563,8 +798,9 @@ export default function Section2() {
                             <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
                                 후기
                                 <span className="position-absolute top-0 start-0 text-primary mt-4">
-                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
+                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
+                                         viewBox="0 0 60 4" fill="none">
+                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
                                     </svg>
                                 </span>
                             </h6>
@@ -572,23 +808,27 @@ export default function Section2() {
                                 <div className="mb-3">
                                     <div className="icon-80 mb-3">
                                         <Link href="#">
-                                            <img className="rounded-3" src="assets/imgs/pages/yoga/page-classes-details/recent-img.png" alt="AstraX" />
+                                            <img className="rounded-3"
+                                                 src="assets/imgs/pages/yoga/page-classes-details/review-img.png"
+                                                 alt="AstraX"/>
                                         </Link>
                                     </div>
                                 </div>
                                 <div>
                                     <div className="d-flex align-items-center gap-2 mb-3">
-                                        <span className="text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>김민지</span>
+                                        <span className="text-white"
+                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>김민지</span>
                                         <span className="text-gray-500">|</span>
-                                        <span className="text-gray-400" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>6기 서비스팀</span>
+                                        <span className="text-gray-400"
+                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>6기 서비스팀</span>
                                     </div>
 
                                     <div
-                                        className="text-gray-300 leading-relaxed"
+                                        className="text-white leading-relaxed text-lg font-medium "
                                         style={{
                                             fontFamily: "Pretendard, system-ui, -apple-system",
-                                            fontSize: "15px",
-                                            lineHeight: "1.8"
+                                            fontSize: "16px",
+                                            lineHeight: "1.5"
                                         }}>
                                         해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)
                                     </div>
@@ -672,6 +912,7 @@ export default function Section2() {
                     </div>
                 </div>
             </div>
-        </section>
+            </section>
+        </>
     );
 }
