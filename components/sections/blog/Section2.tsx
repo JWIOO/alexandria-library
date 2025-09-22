@@ -642,7 +642,8 @@ export default function Section2() {
                 </form>
                 <div className="text-anime-style-2 mb-8 text-anime-style-2"> </div>
                 <div className="row g-5">
-                    <div className="col-lg-8">
+                    {/* 데스크탑용 기존 레이아웃 */}
+                    <div className="d-none d-lg-block col-lg-8">
                         {currentItems.map(({ img, link, link_author, code_first, code_second, title, description, goal, steps, bestCase, review, progressCount, rating }, index) => (
                             <div
                                 key={startIndex + index}
@@ -969,7 +970,401 @@ export default function Section2() {
                             </div>
                         )}
                     </div>
-                    <div className="col-lg-4 ps-lg-5 mb-lg-0 mb-5">
+
+                    {/* 모바일용 순차적 레이아웃 */}
+                    <div className="d-lg-none col-12">
+                        {currentItems.map(({ img, link, link_author, code_first, code_second, title, description, goal, steps, bestCase, review, progressCount, rating }, index) => (
+                            <div key={`mobile-item-${startIndex + index}`} className="mb-6">
+                                {/* 메인 카드 */}
+                                <div className="card-new position-relative wow img-custom-anim-top mb-4">
+                                    <div className="card-new-img position-relative rounded-top-3 overflow-hidden zoom-img">
+                                        <div className="ratio ratio-16x9">
+                                            <img className="w-full rounded-tl-xl rounded-tr-xl object-fit-cover"
+                                                 src={`assets/imgs/pages/yoga/page-classes-details/${img}`} alt="AstraX" />
+                                        </div>
+                                        {/* 좌측 상단 뱃지 */}
+                                        <div className="px-3.5 py-2 position-absolute top-0 start-0 m-3"
+                                            style={{
+                                                padding: '30px 18px',
+                                                left: 0,
+                                                top: 0,
+                                                position: 'absolute',
+                                                backgroundColor: '#dcfce7',
+                                                borderRadius: '5px',
+                                                display: 'inline-flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                gap: '10px',
+                                                overflow: 'hidden',
+                                                margin: '12px'
+                                            }}
+                                        >
+                                            <div style={{
+                                                justifyContent: 'center',
+                                                color: '#166534',
+                                                fontSize: '14px',
+                                                fontWeight: 'bold',
+                                                fontFamily: 'Pretendard'
+                                            }}>
+                                                필수형
+                                            </div>
+                                        </div>
+                                        <div className="position-absolute bottom-0 start-0 w-100 py-2 news-gradient--overlay news-gradient from-green-500/80 to-teal-200/80">
+                                            <div className="d-flex card-news-information gap-4 ps-2 ms-3" style={{color: 'transparent'}}>
+                                                <div className="d-flex align-items-center gap-1">
+                                                    <i className="fa-solid fa-code_seconds" style={{color: 'black', backgroundColor: 'transparent'}} />
+                                                    <p className="mb-0">
+                                                        <Link href="#" className="">{code_first}</Link>
+                                                    </p>
+                                                </div>
+                                                <div className="d-flex align-items-center gap-1">
+                                                    <i className="fa-solid fa-code_seconds" style={{color: 'black', backgroundColor: 'transparent'}} />
+                                                    <p className="mb-0 text-black">{code_second}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="card-new-content p-5 bg-black rounded-bottom-3">
+                                        <h5 className="self-stretch h-9 justify-center text-white leading-10" style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}>
+                                            {title.includes('] ') ? (
+                                                title.split('] ').map((part, idx) => (
+                                                    idx === 0 ?
+                                                    <span key={idx}>{part}]<br /></span> :
+                                                    <span key={idx}>{part}</span>
+                                                ))
+                                            ) : (
+                                                <span>{title}</span>
+                                            )}
+                                        </h5>
+
+                                        <Link href="https://phalanx-club.tistory.com/1471" className="btn btn-primary hover-up rounded-0 mt-3 mb-3">
+                                            <span style={{ color: '#ADFF00' }}>게시물 보기</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16" fill="none">
+                                                <path d="M15.8167 7.55759C15.8165 7.5574 15.8163 7.55719 15.8161 7.557L12.5504 4.307C12.3057 4.06353 11.91 4.06444 11.6665 4.30912C11.423 4.55378 11.4239 4.9495 11.6686 5.193L13.8612 7.375H0.625C0.279813 7.375 0 7.65481 0 8C0 8.34519 0.279813 8.625 0.625 8.625H13.8612L11.6686 10.807C11.4239 11.0505 11.423 11.4462 11.6665 11.6909C11.91 11.9356 12.3058 11.9364 12.5504 11.693L15.8162 8.443C15.8163 8.44281 15.8165 8.44259 15.8167 8.4424C16.0615 8.19809 16.0607 7.80109 15.8167 7.55759Z" fill="#ADFF00"/>
+                                            </svg>
+                                        </Link>
+                                        <div className="self-stretch justify-center text-zinc-500 text-base font-medium leading-relaxed text-description-title"
+                                            style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>설명</div>
+                                        <p className="pb-2 text-description-content">{description}</p>
+
+                                        <div className="self-stretch justify-center text-zinc-500 text-base font-medium leading-relaxed text-description-title"
+                                            style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>목표</div>
+                                        <p className="mb-5 pb-5 text-description-content">{goal}</p>
+
+                                        {/* 슬로건 영역 */}
+                                        <div style={{
+                                            position: "relative",
+                                            width: "100%",
+                                            height: "104px",
+                                            padding: "20px",
+                                            borderRadius: "12px",
+                                            boxShadow: "0px 3px 15px 0px rgba(255,255,255,0.20)",
+                                            borderBottom: "1px solid #ADFF00",
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            gap: "10px",
+                                            overflow: "hidden",
+                                            backgroundImage: "url('assets/imgs/pages/yoga/page-about/subbanner.png')",
+                                            backgroundSize: "cover",
+                                            backgroundPosition: "center",
+                                        }}>
+                                            <div style={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                right: 0,
+                                                bottom: 0,
+                                                backgroundColor: "rgba(0, 0, 0, 0.6)"
+                                            }}></div>
+                                            <div style={{
+                                                position: "relative",
+                                                display: "flex",
+                                                flexDirection: "column",
+                                                justifyContent: "flex-start",
+                                                alignItems: "center",
+                                                gap: "5px"
+                                            }}>
+                                                <div style={{
+                                                    width: "100%",
+                                                    textAlign: "center",
+                                                    color: "white",
+                                                    fontSize: "14px",
+                                                    fontWeight: "bold",
+                                                    fontFamily: "Gapyeong_Hanseokbong",
+                                                    lineHeight: "1.375"
+                                                }}>
+                                                    "아들아, 중고차를 팔 때, 단 1시간을 들여 정성들여 닦고 간단한 흠집만이라도 제거한다면, <br />
+                                                    그 간단한 '정성'만으로도 몇 백불은 더 받을 수 있단다."
+                                                </div>
+                                                <div style={{
+                                                    textAlign: "center",
+                                                    color: "#9ca3af",
+                                                    fontSize: "10px",
+                                                    fontWeight: "bold",
+                                                    fontFamily: "Gapyeong_Hanseokbong",
+                                                    lineHeight: "1"
+                                                }}>
+                                                    - 미국 애리조나 주 카운티 maxim -
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* 진행횟수 / 평점 섹션 */}
+                                        <div className="row g-3 mb-2" style={{marginTop: '0.2px'}}>
+                                            <div className="col-6">
+                                                <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                                   진행 횟수
+                                                    <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                        <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
+                                                            <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
+                                                        </svg>
+                                                    </span>
+                                                </h6>
+                                                <div className="d-flex align-items-baseline">
+                                                    <span className="fw-bold fs-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>{progressCount}</span>
+                                                    <span className="text-gray-400 ms-2" style={{
+                                                        fontFamily: "Pretendard, system-ui, -apple-system",
+                                                        color: "#a3a3a3",
+                                                        fontSize: "20px",
+                                                        fontWeight: "400"
+                                                    }}>회</span>
+                                                </div>
+                                            </div>
+                                            <div className="col-6">
+                                                <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                                    평점
+                                                    <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                        <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
+                                                            <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00" />
+                                                        </svg>
+                                                    </span>
+                                                </h6>
+                                                <div className="d-flex align-items-center">
+                                                    <span className="fw-bold fs-2 me-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>{rating}</span>
+                                                    <div className="d-flex">
+                                                        {Array.from({ length: 10 }).map((_, i) => (
+                                                            <i key={i} className="fa-solid fa-star" style={{
+                                                                fontSize: "12px",
+                                                                color: i < Math.floor(rating) ? "#ADFF00" : "#6b7280"
+                                                            }} />
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* 해당 카드의 사이드바 정보들 */}
+                                <div className="row g-3 mb-5">
+                                    {/* 구성 스텝 */}
+                                    <div className="col-12">
+                                        <div className="block-our-services p-4 bg-black rounded-4 border-primary-2">
+                                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                                구성 스텝
+                                                <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
+                                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
+                                                    </svg>
+                                                </span>
+                                            </h6>
+                                            <div className="d-flex flex-column gap-2">
+                                                {(steps || []).map((step, stepIdx) => (
+                                                    <div key={stepIdx} className="p-3 rounded-2" style={{
+                                                        backgroundColor: 'transparent',
+                                                        border: '1px solid #666666',
+                                                        borderRadius: '5px'
+                                                    }}>
+                                                        <div className="d-flex align-items-start gap-2">
+                                                            <span className="text-white fw-semibold" style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>{stepIdx + 1})</span>
+                                                            <span style={{
+                                                                fontFamily: "Pretendard, system-ui, -apple-system",
+                                                                flex: 1,
+                                                                color: '#B4B9C0',
+                                                                letterSpacing: '-1.2px'
+                                                            }}>{step}</span>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 우수 사례 */}
+                                    <div className="col-12">
+                                        <div className="p-4 rounded-4 bg-black">
+                                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                                우수 사례
+                                                <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
+                                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
+                                                    </svg>
+                                                </span>
+                                            </h6>
+                                            <div className="d-flex align-items-start wow img-custom-anim-top gap-3">
+                                                <div className="flex-shrink-0">
+                                                    <div className="icon-80">
+                                                        <Link href="#">
+                                                            <img className="rounded-3 object-fit-cover"
+                                                                 src={`assets/imgs/pages/yoga/page-classes-details/${bestCase?.img || 'recent-img.png'}`}
+                                                                 alt="AstraX" />
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                                <div className="flex-grow-1">
+                                                    <div className="d-flex align-items-center gap-2 mb-2">
+                                                        <span className="text-white text-sm">{bestCase?.name || '이혜인'}</span>
+                                                        <span className="text-gray-500">|</span>
+                                                        <span className="text-gray-400 text-sm">{bestCase?.team || '7기 브랜드팀'}</span>
+                                                    </div>
+                                                    <Link href={bestCase?.link || 'https://phalanx-club.tistory.com/1472'}>
+                                                        <div className="text-white text-sm fw-bold link-hover-effect" style={{
+                                                            lineHeight: "1.4",
+                                                            textDecoration: "underline",
+                                                            transition: "color 0.3s ease"
+                                                        }}>
+                                                            {bestCase?.title || 'GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)'}
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 후기 */}
+                                    <div className="col-12">
+                                        <div className="p-4 rounded-4 bg-black">
+                                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                                후기
+                                                <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4} viewBox="0 0 60 4" fill="none">
+                                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
+                                                    </svg>
+                                                </span>
+                                            </h6>
+                                            <div className="wow img-custom-anim-top">
+                                                <div className="mb-3">
+                                                    <div className="icon-80 mb-3">
+                                                        <Link href="#">
+                                                            <img className="rounded-3" src={`assets/imgs/pages/yoga/page-classes-details/${review?.img || 'review-img.png'}`} alt="AstraX"/>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div className="d-flex align-items-center gap-2 mb-3">
+                                                        <span className="text-white" style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>{review?.name || '김민지'}</span>
+                                                        <span className="text-gray-500">|</span>
+                                                        <span className="text-gray-400" style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>{review?.team || '6기 서비스팀'}</span>
+                                                    </div>
+                                                    <div className="text-white leading-relaxed text-lg font-medium" style={{
+                                                        fontFamily: "Pretendard, system-ui, -apple-system",
+                                                        fontSize: "16px",
+                                                        lineHeight: "1.5"
+                                                    }}>
+                                                        {review?.content || '해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똁하게 기획 하시기 바랍니다 :)'}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* 모바일 페이지네이션 */}
+                        {totalPages > 1 && (
+                            <div className="row pt-3 text-center">
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <nav aria-label="Page navigation example">
+                                        <ul className="pagination gap-2">
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 1 ? 'disabled' : ''}`}
+                                                    href="#"
+                                                    aria-label="Previous"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        if (currentPage > 1) handlePageChange(currentPage - 1);
+                                                    }}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 22 22" fill="none">
+                                                        <path className="stroke-dark" d="M9.49554 6.5L4.78125 11L9.49554 15.5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                        <path className="stroke-dark" d="M17.2143 11H5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </Link>
+                                            </li>
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 1 ? 'active' : ''}`}
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handlePageChange(1);
+                                                    }}
+                                                >
+                                                    1
+                                                </Link>
+                                            </li>
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 2 ? 'active' : ''}`}
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        handlePageChange(2);
+                                                    }}
+                                                >
+                                                    2
+                                                </Link>
+                                            </li>
+                                            {totalPages >= 3 && (
+                                                <li className="page-item">
+                                                    <Link
+                                                        className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === 3 ? 'active' : ''}`}
+                                                        href="#"
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            handlePageChange(3);
+                                                        }}
+                                                    >
+                                                        3
+                                                    </Link>
+                                                </li>
+                                            )}
+                                            {totalPages > 3 && (
+                                                <li className="page-item">
+                                                    <Link className="icon-md fs-5 page-link pagination_item_ing border-0 icon-shape fw-regular" href="#">
+                                                        ···
+                                                    </Link>
+                                                </li>
+                                            )}
+                                            <li className="page-item">
+                                                <Link
+                                                    className={`icon-md fs-5 page-link pagination_item border-0 icon-shape fw-regular ${currentPage === totalPages ? 'disabled' : ''}`}
+                                                    href="#"
+                                                    aria-label="Next"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        if (currentPage < totalPages) handlePageChange(currentPage + 1);
+                                                    }}
+                                                >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 22 22" fill="none">
+                                                        <path className="stroke-dark" d="M12.5 6.5L17.2143 11L12.5 15.5" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                        <path className="stroke-dark" d="M16.9955 11H4.78125" stroke="#111827" strokeWidth="1.28571" strokeLinecap="round" strokeLinejoin="round" />
+                                                    </svg>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* 데스크탑용 사이드바 */}
+                    <div className="d-none d-lg-block col-lg-4 ps-lg-5 mb-lg-0 mb-5">
                         {/*<div className="block-search p-lg-5 p-3 bg-white rounded-4 border-primary-2">*/}
                         {/*    /!*<h6 className="position-relative border-bottom w-100 mb-4 pb-3">*!/*/}
                         {/*    /!*    Search Here*!/*/}
