@@ -50,7 +50,7 @@ const listnews = [
             name: "박지훈",
             team: "8기 전략팀",
             title: "리서치 없이 기획했다가 프로젝트 망한 썰과 교훈",
-            link: "https://phalanx-club.tistory.com/1473",
+            link: "https://phalanx-club.tistory.com/1472",
             img: "recent-img.png"
         },
         review: {
@@ -80,7 +80,7 @@ const listnews = [
             name: "최민석",
             team: "6기 기획팀",
             title: "CEO 앞에서 발표했는데 박수받은 기획 스토리",
-            link: "https://phalanx-club.tistory.com/1474",
+            link: "https://phalanx-club.tistory.com/1472",
             img: "recent-img.png"
         },
         review: {
@@ -140,7 +140,7 @@ const listnews = [
             name: "박지훈",
             team: "8기 전략팀",
             title: "리서치 없이 기획했다가 프로젝트 망한 썰과 교훈",
-            link: "https://phalanx-club.tistory.com/1473",
+            link: "https://phalanx-club.tistory.com/1472",
             img: "recent-img.png"
         },
         review: {
@@ -428,8 +428,8 @@ export default function Section2() {
     const itemsPerPage = 5;
 
     // 메인 카드들의 ref와 높이 상태
-    const cardRefs = useRef([]);
-    const [cardHeights, setCardHeights] = useState([]);
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const [cardHeights, setCardHeights] = useState<number[]>([]);
 
     // 페이지네이션 계산
     const totalPages = Math.ceil(listnews.length / itemsPerPage);
@@ -495,7 +495,7 @@ export default function Section2() {
         const timer = setTimeout(measureCardHeights, 100);
 
         // 이미지 로드 이벤트 리스너
-        const images = document.querySelectorAll('.card-new img');
+        const images = document.querySelectorAll('.card-new img') as NodeListOf<HTMLImageElement>;
         let loadedCount = 0;
 
         const handleImageLoad = () => {
@@ -647,7 +647,7 @@ export default function Section2() {
                             <div
                                 key={startIndex + index}
                                 className="card-new position-relative wow img-custom-anim-top mb-6"
-                                ref={el => cardRefs.current[index] = el}
+                                ref={el => { cardRefs.current[index] = el; }}
                             >
                                 <div className="card-new-img position-relative rounded-top-3 overflow-hidden zoom-img">
 
@@ -1093,7 +1093,7 @@ export default function Section2() {
                                                     <span className="text-gray-500">|</span>
                                                     <span className="text-gray-400 text-sm">{item.bestCase?.team || '7기 브랜드팀'}</span>
                                                 </div>
-                                                <Link href={item.bestCase?.link || '#'}>
+                                                <Link href={item.bestCase?.link || 'https://phalanx-club.tistory.com/1472'}>
                                                     <div
                                                         className="text-white text-sm fw-bold link-hover-effect"
                                                         style={{

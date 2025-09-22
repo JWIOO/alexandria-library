@@ -44,6 +44,7 @@ export default function Section4() {
                     </div>
                 </div>
             </section>
+            {/* @ts-ignore */}
             <ModalVideo channel="youtube" isOpen={isOpen} videoId="GSENAaAu8QQ" onClose={() => setIsOpen(false)} />
         </>
     );
