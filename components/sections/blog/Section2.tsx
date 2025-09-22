@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const listnews = [
     {
@@ -9,144 +9,427 @@ const listnews = [
         code_first: "PXO-103",
         code_second: "Business",
         title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        steps: [
+            "[도식화] 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등)",
+            "[그래프] 잘 보이는 기획은 그래프를 가진다 (막대, 선, 원형, 점형 등)",
+            "[강조화] 잘 보이는 기획은 포인트를 가진다 (크기, 색상, 밑줄, 굵기, 배경 등)"
+        ],
+        bestCase: {
+            name: "이혜인",
+            team: "7기 브랜드팀",
+            title: "GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)",
+            link: "https://phalanx-club.tistory.com/1472",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "김민지",
+            team: "6기 서비스팀",
+            content: "해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)",
+            img: "review-img.png"
+        },
+        progressCount: 37,
+        rating: 9.0
     },
+    {
+        img: "img-new-2.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-104",
+        code_second: "Strategy",
+        title: "[리서치 TOOL] 데이터 기반 의사결정 : 추측이 아닌 근거로 말하자.",
+        description: "비즈니스 기획에서 가장 중요한 것은 데이터를 기반으로 한 의사결정입니다. 본 과정에서는 올바른 리서치 방법론과 데이터 해석 능력을 기를 수 있습니다.",
+        goal: "데이터 분석 도구 활용법과 리서치 설계 방법을 익혀 근거 있는 기획을 할 수 있는 역량을 기릅니다.",
+        steps: [
+            "[정량 리서치] 설문조사와 통계 분석을 통한 객관적 데이터 수집",
+            "[정성 리서치] 인터뷰와 관찰을 통한 심층적 인사이트 도출",
+            "[데이터 시각화] 수집된 데이터를 효과적으로 전달하는 시각화 기법"
+        ],
+        bestCase: {
+            name: "박지훈",
+            team: "8기 전략팀",
+            title: "리서치 없이 기획했다가 프로젝트 망한 썰과 교훈",
+            link: "https://phalanx-club.tistory.com/1473",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "이소영",
+            team: "7기 마케팅팀",
+            content: "리서치 방법론을 체계적으로 배울 수 있어서 좋았습니다. 특히 데이터 해석 부분이 실무에 많은 도움이 되었어요!",
+            img: "review-img.png"
+        },
+        progressCount: 42,
+        rating: 9.2
+    },
+    {
+        img: "img-new-3.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-105",
+        code_second: "Communication",
+        title: "[발표 TOOL] 스토리텔링 : 기획자는 이야기꾼이어야 한다.",
+        description: "아무리 좋은 기획도 제대로 전달되지 않으면 의미가 없습니다. 효과적인 스토리텔링 기법을 통해 설득력 있는 발표를 만들어보세요.",
+        goal: "논리적 구조와 감정적 공감을 동시에 만족시키는 스토리텔링 발표 능력을 개발합니다.",
+        steps: [
+            "[스토리 구조] 기승전결을 활용한 논리적 전개와 흐름 설계",
+            "[시각적 스토리텔링] 인포그래픽과 차트를 활용한 시각적 전달",
+            "[청중 분석] 타겟 오디언스에 맞는 메시지 커스터마이징"
+        ],
+        bestCase: {
+            name: "최민석",
+            team: "6기 기획팀",
+            title: "CEO 앞에서 발표했는데 박수받은 기획 스토리",
+            link: "https://phalanx-club.tistory.com/1474",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "정유진",
+            team: "8기 UX팀",
+            content: "발표 능력이 현저히 향상되었습니다. 스토리텔링 프레임워크를 배운 후 회사에서 발표할 때 반응이 확실히 달라졌어요.",
+            img: "review-img.png"
+        },
+        progressCount: 28,
+        rating: 8.9
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        steps: [
+            "[도식화] 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등)",
+            "[그래프] 잘 보이는 기획은 그래프를 가진다 (막대, 선, 원형, 점형 등)",
+            "[강조화] 잘 보이는 기획은 포인트를 가진다 (크기, 색상, 밑줄, 굵기, 배경 등)"
+        ],
+        bestCase: {
+            name: "이혜인",
+            team: "7기 브랜드팀",
+            title: "GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)",
+            link: "https://phalanx-club.tistory.com/1472",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "김민지",
+            team: "6기 서비스팀",
+            content: "해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)",
+            img: "review-img.png"
+        },
+        progressCount: 37,
+        rating: 9.0
+    },
+    {
+        img: "img-new-2.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-104",
+        code_second: "Strategy",
+        title: "[리서치 TOOL] 데이터 기반 의사결정 : 추측이 아닌 근거로 말하자.",
+        description: "비즈니스 기획에서 가장 중요한 것은 데이터를 기반으로 한 의사결정입니다. 본 과정에서는 올바른 리서치 방법론과 데이터 해석 능력을 기를 수 있습니다.",
+        goal: "데이터 분석 도구 활용법과 리서치 설계 방법을 익혀 근거 있는 기획을 할 수 있는 역량을 기릅니다.",
+        steps: [
+            "[정량 리서치] 설문조사와 통계 분석을 통한 객관적 데이터 수집",
+            "[정성 리서치] 인터뷰와 관찰을 통한 심층적 인사이트 도출",
+            "[데이터 시각화] 수집된 데이터를 효과적으로 전달하는 시각화 기법"
+        ],
+        bestCase: {
+            name: "박지훈",
+            team: "8기 전략팀",
+            title: "리서치 없이 기획했다가 프로젝트 망한 썰과 교훈",
+            link: "https://phalanx-club.tistory.com/1473",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "이소영",
+            team: "7기 마케팅팀",
+            content: "리서치 방법론을 체계적으로 배울 수 있어서 좋았습니다. 특히 데이터 해석 부분이 실무에 많은 도움이 되었어요!",
+            img: "review-img.png"
+        },
+        progressCount: 42,
+        rating: 9.2
+    },
+    {
+        img: "img-new-3.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-105",
+        code_second: "Communication",
+        title: "[발표 TOOL] 스토리텔링 : 기획자는 이야기꾼이어야 한다.",
+        description: "아무리 좋은 기획도 제대로 전달되지 않으면 의미가 없습니다. 효과적인 스토리텔링 기법을 통해 설득력 있는 발표를 만들어보세요.",
+        goal: "논리적 구조와 감정적 공감을 동시에 만족시키는 스토리텔링 발표 능력을 개발합니다.",
+        steps: [
+            "[스토리 구조] 기승전결을 활용한 논리적 전개와 흐름 설계",
+            "[시각적 스토리텔링] 인포그래픽과 차트를 활용한 시각적 전달",
+            "[청중 분석] 타겟 오디언스에 맞는 메시지 커스터마이징"
+        ],
+        bestCase: {
+            name: "최민석",
+            team: "6기 기획팀",
+            title: "CEO 앞에서 발표했는데 박수받은 기획 스토리",
+            link: "https://phalanx-club.tistory.com/1474",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "정유진",
+            team: "8기 UX팀",
+            content: "발표 능력이 현저히 향상되었습니다. 스토리텔링 프레임워크를 배운 후 회사에서 발표할 때 반응이 확실히 달라졌어요.",
+            img: "review-img.png"
+        },
+        progressCount: 28,
+        rating: 8.9
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        steps: [
+            "[도식화] 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등)",
+            "[그래프] 잘 보이는 기획은 그래프를 가진다 (막대, 선, 원형, 점형 등)",
+            "[강조화] 잘 보이는 기획은 포인트를 가진다 (크기, 색상, 밑줄, 굵기, 배경 등)"
+        ],
+        bestCase: {
+            name: "이혜인",
+            team: "7기 브랜드팀",
+            title: "GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)",
+            link: "https://phalanx-club.tistory.com/1472",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "김민지",
+            team: "6기 서비스팀",
+            content: "해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)",
+            img: "review-img.png"
+        },
+        progressCount: 37,
+        rating: 9.0
+    },
+    {
+        img: "img-new-2.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-104",
+        code_second: "Strategy",
+        title: "[리서치 TOOL] 데이터 기반 의사결정 : 추측이 아닌 근거로 말하자.",
+        description: "비즈니스 기획에서 가장 중요한 것은 데이터를 기반으로 한 의사결정입니다. 본 과정에서는 올바른 리서치 방법론과 데이터 해석 능력을 기를 수 있습니다.",
+        goal: "데이터 분석 도구 활용법과 리서치 설계 방법을 익혀 근거 있는 기획을 할 수 있는 역량을 기릅니다.",
+        steps: [
+            "[정량 리서치] 설문조사와 통계 분석을 통한 객관적 데이터 수집",
+            "[정성 리서치] 인터뷰와 관찰을 통한 심층적 인사이트 도출",
+            "[데이터 시각화] 수집된 데이터를 효과적으로 전달하는 시각화 기법"
+        ],
+        bestCase: {
+            name: "박지훈",
+            team: "8기 전략팀",
+            title: "리서치 없이 기획했다가 프로젝트 망한 썰과 교훈",
+            link: "https://phalanx-club.tistory.com/1473",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "이소영",
+            team: "7기 마케팅팀",
+            content: "리서치 방법론을 체계적으로 배울 수 있어서 좋았습니다. 특히 데이터 해석 부분이 실무에 많은 도움이 되었어요!",
+            img: "review-img.png"
+        },
+        progressCount: 42,
+        rating: 9.2
+    },
+    {
+        img: "img-new-3.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-105",
+        code_second: "Communication",
+        title: "[발표 TOOL] 스토리텔링 : 기획자는 이야기꾼이어야 한다.",
+        description: "아무리 좋은 기획도 제대로 전달되지 않으면 의미가 없습니다. 효과적인 스토리텔링 기법을 통해 설득력 있는 발표를 만들어보세요.",
+        goal: "논리적 구조와 감정적 공감을 동시에 만족시키는 스토리텔링 발표 능력을 개발합니다.",
+        steps: [
+            "[스토리 구조] 기승전결을 활용한 논리적 전개와 흐름 설계",
+            "[시각적 스토리텔링] 인포그래픽과 차트를 활용한 시각적 전달",
+            "[청중 분석] 타겟 오디언스에 맞는 메시지 커스터마이징"
+        ],
+        bestCase: {
+            name: "최민석",
+            team: "6기 기획팀",
+            title: "CEO 앞에서 발표했는데 박수받은 기획 스토리",
+            link: "https://phalanx-club.tistory.com/1474",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "정유진",
+            team: "8기 UX팀",
+            content: "발표 능력이 현저히 향상되었습니다. 스토리텔링 프레임워크를 배운 후 회사에서 발표할 때 반응이 확실히 달라졌어요.",
+            img: "review-img.png"
+        },
+        progressCount: 28,
+        rating: 8.9
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-103",
+        code_second: "Business",
+        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
+        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 '실제 기획 자료' (기획안, 기획제안서, 기획 보고소 등)로 제대로 '보여줄 수' 있는지에 대해 초점을 맞추고 있습니다.",
+        steps: [
+            "[도식화] 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등)",
+            "[그래프] 잘 보이는 기획은 그래프를 가진다 (막대, 선, 원형, 점형 등)",
+            "[강조화] 잘 보이는 기획은 포인트를 가진다 (크기, 색상, 밑줄, 굵기, 배경 등)"
+        ],
+        bestCase: {
+            name: "이혜인",
+            team: "7기 브랜드팀",
+            title: "GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)",
+            link: "https://phalanx-club.tistory.com/1472",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "김민지",
+            team: "6기 서비스팀",
+            content: "해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)",
+            img: "review-img.png"
+        },
+        progressCount: 37,
+        rating: 9.0
+    },
+    {
+        img: "img-new-2.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-104",
+        code_second: "Strategy",
+        title: "[리서치 TOOL] 데이터 기반 의사결정 : 추측이 아닌 근거로 말하자.",
+        description: "비즈니스 기획에서 가장 중요한 것은 데이터를 기반으로 한 의사결정입니다. 본 과정에서는 올바른 리서치 방법론과 데이터 해석 능력을 기를 수 있습니다.",
+        goal: "데이터 분석 도구 활용법과 리서치 설계 방법을 익혀 근거 있는 기획을 할 수 있는 역량을 기릅니다.",
+        steps: [
+            "[정량 리서치] 설문조사와 통계 분석을 통한 객관적 데이터 수집",
+            "[정성 리서치] 인터뷰와 관찰을 통한 심층적 인사이트 도출",
+            "[데이터 시각화] 수집된 데이터를 효과적으로 전달하는 시각화 기법"
+        ],
+        bestCase: {
+            name: "박지훈",
+            team: "8기 전략팀",
+            title: "리서치 없이 기획했다가 프로젝트 망한 썰과 교훈",
+            link: "https://phalanx-club.tistory.com/1473",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "이소영",
+            team: "7기 마케팅팀",
+            content: "리서치 방법론을 체계적으로 배울 수 있어서 좋았습니다. 특히 데이터 해석 부분이 실무에 많은 도움이 되었어요!",
+            img: "review-img.png"
+        },
+        progressCount: 42,
+        rating: 9.2
+    },
+    {
+        img: "img-new-3.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-105",
+        code_second: "Communication",
+        title: "[발표 TOOL] 스토리텔링 : 기획자는 이야기꾼이어야 한다.",
+        description: "아무리 좋은 기획도 제대로 전달되지 않으면 의미가 없습니다. 효과적인 스토리텔링 기법을 통해 설득력 있는 발표를 만들어보세요.",
+        goal: "논리적 구조와 감정적 공감을 동시에 만족시키는 스토리텔링 발표 능력을 개발합니다.",
+        steps: [
+            "[스토리 구조] 기승전결을 활용한 논리적 전개와 흐름 설계",
+            "[시각적 스토리텔링] 인포그래픽과 차트를 활용한 시각적 전달",
+            "[청중 분석] 타겟 오디언스에 맞는 메시지 커스터마이징"
+        ],
+        bestCase: {
+            name: "최민석",
+            team: "6기 기획팀",
+            title: "CEO 앞에서 발표했는데 박수받은 기획 스토리",
+            link: "https://phalanx-club.tistory.com/1474",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "정유진",
+            team: "8기 UX팀",
+            content: "발표 능력이 현저히 향상되었습니다. 스토리텔링 프레임워크를 배운 후 회사에서 발표할 때 반응이 확실히 달라졌어요.",
+            img: "review-img.png"
+        },
+        progressCount: 28,
+        rating: 8.9
+    },
+    {
+        img: "img-new-1.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-106",
+        code_second: "Management",
+        title: "[프로젝트 TOOL] 일정관리 : 데드라인을 지키는 기획자가 되자.",
+        description: "성공적인 프로젝트 완수를 위해서는 체계적인 일정 관리가 필수입니다. 실무에서 바로 적용 가능한 프로젝트 관리 스킬을 학습하세요.",
+        goal: "애자일 방법론과 전통적 PM 기법을 활용하여 효율적인 프로젝트 관리 능력을 기릅니다.",
+        steps: [
+            "[일정 계획] WBS 작성과 마일스톤 설정을 통한 체계적 계획 수립",
+            "[리스크 관리] 잠재적 위험 요소 식별과 대응 방안 마련",
+            "[팀 커뮤니케이션] 스탠드업 미팅과 스프린트 리뷰를 통한 원활한 소통"
+        ],
+        bestCase: {
+            name: "김태현",
+            team: "7기 PM팀",
+            title: "6개월 프로젝트를 4개월에 끝낸 일정관리 노하우",
+            link: "https://phalanx-club.tistory.com/1475",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "박서연",
+            team: "6기 개발팀",
+            content: "프로젝트 관리 툴 사용법부터 일정 수립까지 실무적인 내용들이 정말 유용했습니다. 덕분에 팀원들과의 협업이 훨씬 수월해졌어요.",
+            img: "review-img.png"
+        },
+        progressCount: 35,
+        rating: 9.1
+    },
+    {
+        img: "img-new-2.png",
+        link: "/classes-details",
+        link_author: "#",
+        code_first: "PXO-107",
+        code_second: "UX/UI",
+        title: "[UX TOOL] 사용자 중심 설계 : 고객이 원하는 것을 만들자.",
+        description: "진정한 UX 기획은 사용자의 니즈를 정확히 파악하고 이를 제품에 반영하는 것입니다. 사용자 중심의 기획 방법론을 배워보세요.",
+        goal: "사용자 리서치부터 프로토타이핑까지 UX 기획의 전 과정을 체계적으로 학습합니다.",
+        steps: [
+            "[사용자 리서치] 인터뷰, 서베이, 관찰을 통한 사용자 니즈 파악",
+            "[정보 설계] 사이트맵과 와이어프레임을 통한 구조 설계",
+            "[프로토타이핑] 사용성 테스트를 위한 인터랙티브 프로토타입 제작"
+        ],
+        bestCase: {
+            name: "이지은",
+            team: "8기 UX팀",
+            title: "사용자 리서치로 앱 사용률 300% 높인 후기",
+            link: "https://phalanx-club.tistory.com/1476",
+            img: "recent-img.png"
+        },
+        review: {
+            name: "장민호",
+            team: "7기 디자인팀",
+            content: "UX 기획의 기초부터 고급 기법까지 단계별로 잘 구성되어 있습니다. 실제 프로젝트에 바로 적용할 수 있는 실무 중심 내용이 좋았어요.",
+            img: "review-img.png"
+        },
+        progressCount: 41,
+        rating: 9.3
+    }];
 
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-    {
-        img: "img-new-1.png",
-        link: "/classes-details",
-        link_author: "#",
-        code_first: "PXO-103",
-        code_second: "Business",
-        title: "[기획 TOOL] 가시화 : 잘 보이지 않는 기획은, 휴지통으로 간다.",
-        description: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-        goal: "본 과정에서는 비즈니스 실무 기획 직무에 진입하는 모든 유망주들이, 자신이 구상하고 기획하는 모든 내용들을 실무자가 어떤 원칙 등을 통해 ‘실제 기획 자료’ (기획안, 기획제안서, 기획 보고소 등)로 제대로 ‘보여줄 수’ 있는지에 대해 초점을 맞추고 있습니다.",
-    },
-
-    // {
-    //     img: "img-new-2.png",
-    //     link: "/classes-details",
-    //     link_author: "#",
-    //     code_first: "Smith",
-    //     code_second: "Business",
-    //     title: "Mindfulness 101: A Quick Guide",
-    //     description: "Collaboratively pontificate bleeding edge resources with inexpensive methodologies globally initiate multidisciplinary compatible architectures pidiously repurpose leading edge growth strategies with just in time web readiness communicate timely meta services",
-    // },
-    // {
-    //     img: "img-new-3.png",
-    //     link: "/classes-details",
-    //     link_author: "#",
-    //     code_first: "Smith",
-    //     code_second: "Business",
-    //     title: "Yoga’s Health Benefits Explained",
-    //     description: "Collaboratively pontificate bleeding edge resources with inexpensive methodologies globally initiate multidisciplinary compatible architectures pidiously repurpose leading edge growth strategies with just in time web readiness communicate timely meta services",
-    // },
-];
 export default function Section2() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
+
+    // 메인 카드들의 ref와 높이 상태
+    const cardRefs = useRef([]);
+    const [cardHeights, setCardHeights] = useState([]);
 
     // 페이지네이션 계산
     const totalPages = Math.ceil(listnews.length / itemsPerPage);
@@ -191,6 +474,73 @@ export default function Section2() {
         }
         return pages;
     };
+
+    // 사이드바에 표시할 모든 현재 페이지 아이템의 데이터
+    const allCurrentItemsData = currentItems.length > 0 ? currentItems : listnews.slice(0, itemsPerPage);
+
+    // 메인 카드 높이 측정 함수
+    const measureCardHeights = () => {
+        const heights = cardRefs.current.map(ref => {
+            if (ref && ref.offsetHeight) {
+                return ref.offsetHeight;
+            }
+            return 800; // 기본값
+        });
+        setCardHeights(heights);
+    };
+
+    // 이미지 로드 완료 후 높이 재측정
+    useEffect(() => {
+        // 초기 측정
+        const timer = setTimeout(measureCardHeights, 100);
+
+        // 이미지 로드 이벤트 리스너
+        const images = document.querySelectorAll('.card-new img');
+        let loadedCount = 0;
+
+        const handleImageLoad = () => {
+            loadedCount++;
+            if (loadedCount === images.length) {
+                measureCardHeights();
+            }
+        };
+
+        images.forEach(img => {
+            if (img.complete) {
+                handleImageLoad();
+            } else {
+                img.addEventListener('load', handleImageLoad);
+            }
+        });
+
+        // 윈도우 리사이즈 이벤트
+        const handleResize = () => {
+            measureCardHeights();
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            clearTimeout(timer);
+            images.forEach(img => {
+                img.removeEventListener('load', handleImageLoad);
+            });
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [currentItems]);
+
+    // 페이지 변경 시 높이 재측정
+    useEffect(() => {
+        // cardRefs 배열 초기화
+        cardRefs.current = [];
+        setCardHeights([]);
+    }, [currentPage]);
+
+    // 디버깅을 위한 콘솔 로그
+    console.log('=== 사이드바 디버그 ===');
+    console.log('allCurrentItemsData:', allCurrentItemsData);
+    console.log('allCurrentItemsData.length:', allCurrentItemsData.length);
+    console.log('cardHeights:', cardHeights);
 
     return (
         <>
@@ -293,8 +643,12 @@ export default function Section2() {
                 <div className="text-anime-style-2 mb-8 text-anime-style-2"> </div>
                 <div className="row g-5">
                     <div className="col-lg-8">
-                        {currentItems.map(({ img, link, link_author, code_first, code_second, title, description, goal }, index) => (
-                            <div key={startIndex + index} className="card-new position-relative wow img-custom-anim-top mb-6">
+                        {currentItems.map(({ img, link, link_author, code_first, code_second, title, description, goal, steps, bestCase, review, progressCount, rating }, index) => (
+                            <div
+                                key={startIndex + index}
+                                className="card-new position-relative wow img-custom-anim-top mb-6"
+                                ref={el => cardRefs.current[index] = el}
+                            >
                                 <div className="card-new-img position-relative rounded-top-3 overflow-hidden zoom-img">
 
                                     <div className="ratio ratio-16x9">
@@ -340,7 +694,7 @@ export default function Section2() {
                                                  />
                                                 <p className="mb-0">
 
-                                                    <Link href={`${link_author}`} className="">
+                                                    <Link href="#" className="">
                                                         {code_first}
                                                     </Link>
                                                 </p>
@@ -355,11 +709,15 @@ export default function Section2() {
                                 </div>
                                 <div className="card-new-content p-5 bg-black rounded-bottom-3">
                                     <h5 className="self-stretch h-9 justify-center text-white leading-10" style={{ fontFamily: 'Pretendard', fontWeight: 'bold' }}>
-                                        {title.split('] ').map((part, index) => (
-                                            index === 0 ?
-                                            <span key={index}>{part}]<br /></span> :
-                                            <span key={index}>{part}</span>
-                                        ))}
+                                        {title.includes('] ') ? (
+                                            title.split('] ').map((part, index) => (
+                                                index === 0 ?
+                                                <span key={index}>{part}]<br /></span> :
+                                                <span key={index}>{part}</span>
+                                            ))
+                                        ) : (
+                                            <span>{title}</span>
+                                        )}
                                     </h5>
 
                                     <Link href="https://phalanx-club.tistory.com/1471" className="btn btn-primary hover-up rounded-0 mt-3 mb-3">
@@ -464,7 +822,7 @@ export default function Section2() {
                                                 </h6>
                                             </div>
                                             <div className="d-flex align-items-baseline items-center justify-end ">
-                                            <span className="fw-bold fs-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>37</span>
+                                            <span className="fw-bold fs-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>{progressCount}</span>
                                                 <span className="text-gray-400 ms-2"  style={{
                                                     fontFamily: "Pretendard, system-ui, -apple-system",
                                                     color: "#a3a3a3",
@@ -487,7 +845,7 @@ export default function Section2() {
                                                     </span>
                                             </h6>
                                             <div className="d-flex align-items-center">
-                                                <span className="fw-bold fs-2 me-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>9.0</span>
+                                                <span className="fw-bold fs-2 me-2 text-white" style={{ fontFamily: "Pretendard, system-ui, -apple-system" }}>{rating}</span>
                                                 {/* 별 10개 */}
                                                 <div className="d-flex">
                                                     {Array.from({ length: 10 }).map((_, i) => (
@@ -496,7 +854,7 @@ export default function Section2() {
                                                             className="fa-solid fa-star"
                                                             style={{
                                                                 fontSize: "14px",
-                                                                color: i < 9 ? "#ADFF00" : "#6b7280"
+                                                                color: i < Math.floor(rating) ? "#ADFF00" : "#6b7280"
                                                             }}
                                                         />
                                                     ))}
@@ -647,196 +1005,154 @@ export default function Section2() {
 
 
 
-                        <div className="block-our-services p-lg-5  bg-black rounded-4 border-primary-2">
-                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
-                                구성 스텝
-                                <span className="position-absolute top-0 start-0 text-primary mt-4">
-                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
-                                         viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
-                                    </svg>
-                                </span>
-                            </h6>
+                        {/* 각 아이템별 사이드바 세트 */}
+                        <div className="d-flex flex-column">
+                            {allCurrentItemsData.map((item, itemIndex) => (
+                                <div key={`sidebar-set-${itemIndex}`}
+                                     className="position-relative"
+                                     style={{
+                                         // 측정된 카드 높이 또는 기본값 사용
+                                         minHeight: cardHeights[itemIndex] ? `${cardHeights[itemIndex]}px` : '800px',
+                                         marginBottom: itemIndex < allCurrentItemsData.length - 1 ? '3rem' : '0'
+                                     }}>
 
-                            {/* 구성 스텝 아이템들 */}
-                            <div className="d-flex flex-column gap-2">
-                                <div
-                                    className="p-3 rounded-2"
-                                    style={{
-                                        backgroundColor: 'transparent',
-                                        border: '1px solid #666666',
-                                        borderRadius: '5px'
-                                    }}
-                                >
-                                    <div className="d-flex align-items-start gap-2"
-                                    style={{padding: '0px'}}>
-                                        <span className="text-white fw-semibold"
-                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>1)</span>
-                                        <span
-                                            className=""
-                                            style={{
-                                                fontFamily: "Pretendard, system-ui, -apple-system",
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis',
-                                                whiteSpace: 'nowrap',
-                                                flex: 1,
-                                                color: '#B4B9C0',
-                                                letterSpacing: '-1.2px'
+                                    {/* 구성 스텝 */}
+                                    <div className="block-our-services p-lg-5 bg-black rounded-4 border-primary-2 mb-4">
+                                        <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                            구성 스텝
+                                            <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
+                                                     viewBox="0 0 60 4" fill="none">
+                                                    <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
+                                                </svg>
+                                            </span>
+                                        </h6>
 
-                                            }}
-                                        >
-                                            [도식화] 잘 보이는 기획은 도형을 가진다 (상하/좌우 배치, 방향, 기호, 색깔 등)
-                                        </span>
-                                    </div>
-                                </div>
-
-
-                                <div
-                                    className="p-3 rounded-2"
-                                    style={{
-                                        backgroundColor: 'transparent',
-                                        border: '1px solid #666666',
-                                        borderRadius: '5px'
-                                    }}
-                                >
-                                    <div className="d-flex align-items-start gap-2">
-                                        <span className="text-white fw-semibold"
-                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>2)</span>
-                                        <span
-                                            className="text-gray-400"
-                                            style={{
-                                                fontFamily: "Pretendard, system-ui, -apple-system",
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis',
-                                                whiteSpace: 'nowrap',
-                                                flex: 1,
-                                                color: '#B4B9C0',
-                                                letterSpacing: '-1.2px'
-                                            }}
-                                        >
-                                            [그래프] 잘 보이는 기획은 그래프를 가진다 (막대, 선, 원형, 점형 등)
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div
-                                    className="p-3 rounded-2"
-                                    style={{
-                                        backgroundColor: 'transparent',
-                                        border: '1px solid #666666',
-                                        borderRadius: '5px'
-                                    }}
-                                >
-                                    <div className="d-flex align-items-start gap-2">
-                                        <span className="text-white fw-semibold"
-                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>3)</span>
-                                        <span
-                                            className="text-gray-400"
-                                            style={{
-                                                fontFamily: "Pretendard, system-ui, -apple-system",
-                                                overflow: 'hidden',
-                                                textOverflow: 'ellipsis',
-                                                whiteSpace: 'nowrap',
-                                                flex: 1,
-                                                color: '#B4B9C0',
-                                                letterSpacing: '-1.2px'
-
-                                            }}
-                                        >
-                                            [강조화] 잘 보이는 기획은 포인트를 가진다 (크기, 색상, 밑줄, 굵기, 배경 등)
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="p-lg-5 p-4 rounded-4 bg-black  mt-4">
-                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
-                                우수 사례
-                                <span className="position-absolute top-0 start-0 text-primary mt-4">
-                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
-                                         viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
-                                    </svg>
-                                </span>
-                            </h6>
-                            <div className="d-flex align-items-start wow img-custom-anim-top gap-3">
-                                <div className="flex-shrink-0">
-                                    <div className="icon-80">
-                                        <Link href="#">
-                                            <img
-                                                className="rounded-3 object-fit-cover"
-                                                src="assets/imgs/pages/yoga/page-classes-details/recent-img.png"
-                                                alt="AstraX"
-                                            />
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div className="flex-grow-1">
-                                    <div className="d-flex align-items-center gap-2 mb-2">
-                                        <span className="text-white text-sm">이혜인</span>
-                                        <span className="text-gray-500">|</span>
-                                        <span className="text-gray-400 text-sm">7기 브랜드팀</span>
-                                    </div>
-                                    <Link href="https://phalanx-club.tistory.com/1472">
-                                        <div
-                                            className="text-white text-sm fw-bold link-hover-effect"
-                                            style={{
-                                                lineHeight: "1.4",
-                                                textDecoration: "underline",
-                                                transition: "color 0.3s ease"
-                                            }}
-                                        >
-                                            GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)
+                                        {/* 구성 스텝 아이템들 */}
+                                        <div className="d-flex flex-column gap-2">
+                                            {(item.steps || []).map((step, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="p-3 rounded-2"
+                                                    style={{
+                                                        backgroundColor: 'transparent',
+                                                        border: '1px solid #666666',
+                                                        borderRadius: '5px'
+                                                    }}
+                                                >
+                                                    <div className="d-flex align-items-start gap-2"
+                                                    style={{padding: '0px'}}>
+                                                        <span className="text-white fw-semibold"
+                                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>{index + 1})</span>
+                                                        <span
+                                                            className=""
+                                                            style={{
+                                                                fontFamily: "Pretendard, system-ui, -apple-system",
+                                                                overflow: 'hidden',
+                                                                textOverflow: 'ellipsis',
+                                                                whiteSpace: 'nowrap',
+                                                                flex: 1,
+                                                                color: '#B4B9C0',
+                                                                letterSpacing: '-1.2px'
+                                                            }}
+                                                        >
+                                                            {step}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
-                                    </Link>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="p-lg-5 p-4 rounded-4 bg-black  mt-4">
-                            <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
-                                후기
-                                <span className="position-absolute top-0 start-0 text-primary mt-4">
-                                    <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
-                                         viewBox="0 0 60 4" fill="none">
-                                        <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
-                                    </svg>
-                                </span>
-                            </h6>
-                            <div className="wow img-custom-anim-top">
-                                <div className="mb-3">
-                                    <div className="icon-80 mb-3">
-                                        <Link href="#">
-                                            <img className="rounded-3"
-                                                 src="assets/imgs/pages/yoga/page-classes-details/review-img.png"
-                                                 alt="AstraX"/>
-                                        </Link>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="d-flex align-items-center gap-2 mb-3">
-                                        <span className="text-white"
-                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>김민지</span>
-                                        <span className="text-gray-500">|</span>
-                                        <span className="text-gray-400"
-                                              style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>6기 서비스팀</span>
                                     </div>
 
-                                    <div
-                                        className="text-white leading-relaxed text-lg font-medium "
-                                        style={{
-                                            fontFamily: "Pretendard, system-ui, -apple-system",
-                                            fontSize: "16px",
-                                            lineHeight: "1.5"
-                                        }}>
-                                        해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똑하게 기획 하시기 바랍니다 :)
+                                    {/* 우수 사례 */}
+                                    <div className="p-lg-5 p-4 rounded-4 bg-black mt-4 mb-4">
+                                        <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                            우수 사례
+                                            <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
+                                                     viewBox="0 0 60 4" fill="none">
+                                                    <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
+                                                </svg>
+                                            </span>
+                                        </h6>
+                                        <div className="d-flex align-items-start wow img-custom-anim-top gap-3">
+                                            <div className="flex-shrink-0">
+                                                <div className="icon-80">
+                                                    <Link href="#">
+                                                        <img
+                                                            className="rounded-3 object-fit-cover"
+                                                            src={`assets/imgs/pages/yoga/page-classes-details/${item.bestCase?.img || 'recent-img.png'}`}
+                                                            alt="AstraX"
+                                                        />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                            <div className="flex-grow-1">
+                                                <div className="d-flex align-items-center gap-2 mb-2">
+                                                    <span className="text-white text-sm">{item.bestCase?.name || '이혜인'}</span>
+                                                    <span className="text-gray-500">|</span>
+                                                    <span className="text-gray-400 text-sm">{item.bestCase?.team || '7기 브랜드팀'}</span>
+                                                </div>
+                                                <Link href={item.bestCase?.link || '#'}>
+                                                    <div
+                                                        className="text-white text-sm fw-bold link-hover-effect"
+                                                        style={{
+                                                            lineHeight: "1.4",
+                                                            textDecoration: "underline",
+                                                            transition: "color 0.3s ease"
+                                                        }}
+                                                    >
+                                                        {item.bestCase?.title || 'GT 만나고 내 기획 인생 180도 달라진 썰 푼다. (GD 아님)'}
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        </div>
                                     </div>
 
+                                    {/* 후기 */}
+                                    <div className="p-lg-5 p-4 rounded-4 bg-black">
+                                        <h6 className="text-white position-relative border-bottom w-100 mb-4 pb-3">
+                                            후기
+                                            <span className="position-absolute top-0 start-0 text-primary mt-4">
+                                                <svg className="mt-1" xmlns="http://www.w3.org/2000/svg" width={60} height={4}
+                                                     viewBox="0 0 60 4" fill="none">
+                                                    <path d="M0 0H56.5L60 4H0V0Z" fill="#ADFF00"/>
+                                                </svg>
+                                            </span>
+                                        </h6>
+                                        <div className="wow img-custom-anim-top">
+                                            <div className="mb-3">
+                                                <div className="icon-80 mb-3">
+                                                    <Link href="#">
+                                                        <img className="rounded-3"
+                                                             src={`assets/imgs/pages/yoga/page-classes-details/${item.review?.img || 'review-img.png'}`}
+                                                             alt="AstraX"/>
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="d-flex align-items-center gap-2 mb-3">
+                                                    <span className="text-white"
+                                                          style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>{item.review?.name || '김민지'}</span>
+                                                    <span className="text-gray-500">|</span>
+                                                    <span className="text-gray-400"
+                                                          style={{fontFamily: "Pretendard, system-ui, -apple-system"}}>{item.review?.team || '6기 서비스팀'}</span>
+                                                </div>
 
+                                                <div
+                                                    className="text-white leading-relaxed text-lg font-medium "
+                                                    style={{
+                                                        fontFamily: "Pretendard, system-ui, -apple-system",
+                                                        fontSize: "16px",
+                                                        lineHeight: "1.5"
+                                                    }}>
+                                                    {item.review?.content || '해당 내용 기획자 초보라면 특히나 꼭 읽어봐야 할 내용입니다 ~! 기초 다지기를 할 때 매우 좋으니 꼭 읽고 똑똁하게 기획 하시기 바랍니다 :)'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-
+                            ))}
                         </div>
 
                         {/*<div className="sidebar__widget p-lg-5 p-4 mt-4 bg-white rounded-4 border-primary-2">*/}
